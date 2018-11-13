@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 
+// State
 class AddClient extends Component {
   state = {
     firstName: '',
@@ -13,7 +14,7 @@ class AddClient extends Component {
     phone: '',
     balance: ''
   };
-
+  //subit form send from this.state to the props
   onSubmit = e => {
     e.preventDefault();
 
@@ -25,16 +26,16 @@ class AddClient extends Component {
     if (newClient.balance === '') {
       newClient.balance = 0;
     }
-
+    //add to firestore
     firestore
       .add({ collection: 'clients' }, newClient)
       .then(() => history.push('/'));
   };
-
+  //change the state
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
+  // DAT RENDER BOYS
   render() {
     return (
       <div>
@@ -121,9 +122,9 @@ class AddClient extends Component {
     );
   }
 }
-
+//Proptypes
 AddClient.propTypes = {
   firestore: PropTypes.object.isRequired
 };
-
+//Export to Firestoreconnect
 export default firestoreConnect()(AddClient);
