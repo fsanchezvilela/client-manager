@@ -42,8 +42,21 @@ const rootReducer = combineReducers({
   settings: settingsReducer
 });
 
-// Create initial state
-const initialState = {};
+//Cheack for settings in localStorage
+if (localStorage.getItem('settings') == null) {
+  //Default settings
+  const defaultSettings = {
+    disableBalanceOnAdd: true,
+    disableBalanceOnEdit: false,
+    allowRegistration: false
+  };
+
+  // Set to a localStorage . wrap in json string ya que el local storage funciona con strings literales
+  localStorage.setItem('settings', JSON.stringify(defaultSettings));
+}
+
+// Create initial state / tranformar el objeto de settings string parseando a JSON
+const initialState = { settings: JSON.parse(localStorage.getItem('settings')) };
 
 //Create Store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
