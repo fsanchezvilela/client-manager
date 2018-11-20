@@ -43,12 +43,12 @@ const rootReducer = combineReducers({
 });
 
 //Cheack for settings in localStorage
-if (localStorage.getItem('settings') == null) {
+if (localStorage.getItem('settings') === null) {
   //Default settings
   const defaultSettings = {
     disableBalanceOnAdd: true,
-    disableBalanceOnEdit: false,
-    allowRegistration: false
+    disableBalanceOnEdit: true,
+    allowRegistration: true
   };
 
   // Set to a localStorage . wrap in json string ya que el local storage funciona con strings literales

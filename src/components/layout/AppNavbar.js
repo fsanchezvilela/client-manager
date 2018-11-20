@@ -43,11 +43,13 @@ class AppNavbar extends Component {
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
-            data-target="#navbarMain"
+            data-target="#navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarMain">
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mr-auto">
               {isAuthenticated ? (
                 <li className="nav-item">
